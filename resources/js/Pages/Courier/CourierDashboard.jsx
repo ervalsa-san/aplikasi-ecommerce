@@ -1,13 +1,13 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.jsx';
+import CourierLayout from '@/Layouts/CourierLayout.jsx';
 import { Head } from '@inertiajs/react';
 
-export default function AdminDashboard({ auth }) {
+export default function CourierDashboard({ auth }) {
     return (
-        <AuthenticatedLayout
+        <CourierLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">AdminDashboard</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Courier Dashboard</h2>}
         >
-            <Head title="AdminDashboard" />
+            <Head title="Courier Dashboard" />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -16,6 +16,6 @@ export default function AdminDashboard({ auth }) {
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </CourierLayout>
     );
 }
