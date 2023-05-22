@@ -3,8 +3,6 @@ import { Head } from '@inertiajs/react';
 
 export default function AdminDashboard(props) {
 
-    console.log(props)
-
     return (
         <AdminLayout
             user={props.auth.user}

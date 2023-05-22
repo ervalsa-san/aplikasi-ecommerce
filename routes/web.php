@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\RedirectAuthenticatedUsersController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,7 +35,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'checkRole:Admin'], function () {
        Route::inertia('/admin/dashboard', 'Admin/AdminDashboard')->name('adminDashboard');
 
-       // Dashboard Admin Controller Resource
+       // Admin User Controller
+       Route::resource('/admin/user', UserController::class);
+       Route::get('/admin/user', [UserController::class, 'index'])->name('adminUser');
+
+
+       // Admin Dashboard Controller Resource
        Route::resource('/admin/dashboard', DashboardAdminController::class);
        Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('adminDashboard');
     });
