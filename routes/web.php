@@ -34,8 +34,8 @@ Route::group(['middleware' => 'auth'], function () {
        Route::inertia('/admin/dashboard', 'Admin/AdminDashboard')->name('adminDashboard');
     });
 
-    Route::group(['middleware' => 'checkRole:User'], function () {
-        Route::inertia('/user/dashboard', 'User/UserDashboard')->name('userDashboard');
+    Route::group(['middleware' => 'checkRole:Customer'], function () {
+        Route::inertia('/customer/dashboard', 'Customer/CustomerDashboard')->name('customerDashboard');
     });
 
     Route::group(['middleware' => 'checkRole:Courier'], function () {

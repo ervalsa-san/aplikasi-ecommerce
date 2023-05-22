@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('role')->nullable();
             $table->string('address')->nullable();
             $table->string('phone_number')->nullable();
-            $table->string('store_name')->nullable();
+            $table->string('store_id')->nullable();
             $table->double('wallet')->nullable();
             $table->string('password');
             $table->rememberToken();

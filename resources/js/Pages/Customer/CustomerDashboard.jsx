@@ -1,13 +1,13 @@
-import UserLayout from '@/Layouts/UserLayout.jsx';
+import CustomerLayout from '@/Layouts/CustomerLayout.jsx';
 import { Head } from '@inertiajs/react';
 
-export default function UserDashboard({ auth }) {
+export default function CustomerDashboard({ auth }) {
     return (
-        <UserLayout
+        <CustomerLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">User Dashboard</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Customer Dashboard</h2>}
         >
-            <Head title="User Dashboard" />
+            <Head title="Customer Dashboard" />
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -16,6 +16,6 @@ export default function UserDashboard({ auth }) {
                     </div>
                 </div>
             </div>
-        </UserLayout>
+        </CustomerLayout>
     );
 }
