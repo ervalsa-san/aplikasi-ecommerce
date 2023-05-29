@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
        // Admin Dashboard Controller Resource
        Route::resource('/admin/dashboard', DashboardAdminController::class);
        Route::get('/admin/dashboard', [DashboardAdminController::class, 'index'])->name('adminDashboard');
+
     });
 
     Route::group(['middleware' => 'checkRole:Customer'], function () {
@@ -54,6 +55,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => 'checkRole:Courier'], function () {
         Route::inertia('/courier/dashboard', 'Courier/CourierDashboard')->name('courierDashboard');
     });
+
+    Route::group(['as' => 'transaction.'], function () {
+        Route::post('/transaction/buy', [\App\Http\Controllers\TransactionController::class, 'buy'])->name('buy');
+    });
 });
 
 Route::middleware('auth')->group(function () {
@@ -61,5 +66,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/{id}', [\App\Http\Controllers\ProductUserController::class, 'show']);
 
 require __DIR__.'/auth.php';
