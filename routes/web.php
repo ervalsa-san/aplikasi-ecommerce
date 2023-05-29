@@ -38,7 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
        // Admin User Controller
        Route::resource('/admin/user', UserController::class);
        Route::get('/admin/user', [UserController::class, 'index'])->name('adminUser');
-
+       Route::post('/admin/user', [UserController::class, 'store'])->name('adminUserStore');
+       Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('adminUserUpdate');
+       Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('adminUserDestroy');
 
        // Admin Dashboard Controller Resource
        Route::resource('/admin/dashboard', DashboardAdminController::class);

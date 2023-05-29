@@ -24,6 +24,13 @@ class UserCollection extends ResourceCollection
                 'total' => User::count(),
                 'per_page' => 10
             ],
+            'filtered' => [
+                'load' => $request->load ?? $this->loadDefault,
+                'q' => $request-> q ?? '',
+                'page' => $request->page ?? 1,
+                'field' => $request->field ?? '',
+                'direction' => $request->direction ?? ''
+            ]
         ];
     }
 }

@@ -3,10 +3,12 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
+import {Link, usePage} from '@inertiajs/react';
 
 export default function Authenticated(props) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
+
+    const { url } = usePage();
 
     return (
         <div className="min-h-screen bg-gray-100">
@@ -25,7 +27,7 @@ export default function Authenticated(props) {
                                     Dashboard
                                 </NavLink>
 
-                                <NavLink href={route('adminUser')} active={route().current('adminUser')}>
+                                <NavLink href={route('adminUser')} active={url.startsWith('/admin/user')}>
                                     User
                                 </NavLink>
 
@@ -34,7 +36,7 @@ export default function Authenticated(props) {
                                 </NavLink>
 
                                 <NavLink href="#">
-                                    Transaction
+                                    Category
                                 </NavLink>
                             </div>
                         </div>
@@ -104,8 +106,12 @@ export default function Authenticated(props) {
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
                     <div className="pt-2 pb-3 space-y-1">
-                        <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
+                        <ResponsiveNavLink href={route('adminDashboard')} active={route().current('adminDashboard')}>
                             Dashboard
+                        </ResponsiveNavLink>
+
+                        <ResponsiveNavLink href={route('adminUser')} active={route().current('adminUser')}>
+                            User
                         </ResponsiveNavLink>
                     </div>
 
